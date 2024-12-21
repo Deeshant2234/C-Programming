@@ -1,3 +1,4 @@
+// MERGE SORT: TWO SEPERATE SORTED ARRAY
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -91,7 +92,7 @@ int main()
 
     // function returning array 
     z_new = mergeSortArray(x,y,7,4);
-     printf("\nSorted Array by Heap: ");
+    printf("\nSorted Array by Heap: ");
     for(int i =0; i<11;i++)
     {
         printf("%d ",z_new[i]);

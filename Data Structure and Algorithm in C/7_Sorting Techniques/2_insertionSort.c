@@ -1,3 +1,4 @@
+// INSERTION SORT
 #include <stdio.h>
 
 void insertionSort(int* arr, int size)
