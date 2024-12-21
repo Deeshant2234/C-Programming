@@ -1,18 +1,20 @@
 #include <stdio.h>
 
-void swap(int* a, int* b){
+void swap(int* a, int* b)
+{
     int temp = *a;
     *a = *b;
     *b = temp;
 }
 
-void bubbleshort(int* arr, int size){
-    for(int i=0; i<size-1;i++){
-        for(int j=0;j<size-1-i;j++){
-            if(arr[j]>arr[j+1]){
-                // int temp=arr[j];
-                // arr[j]=arr[j+1];
-                // arr[j+1]=temp;
+void bubbleshort(int* arr, int size)
+{
+    for(int i=0; i<size-1;i++)
+    {
+        for(int j=0;j<size-1-i;j++)
+        {
+            if(arr[j]>arr[j+1])
+            {
                 swap(&arr[j],&arr[j+1]);
             }
         }
@@ -20,18 +22,21 @@ void bubbleshort(int* arr, int size){
     
 }
 
-void bubbleshort_adaptive(int* arr, int size){
-    for(int i=0; i<size-1;i++){
+void bubbleshort_adaptive(int* arr, int size)
+{
+    for(int i=0; i<size-1;i++)
+    {
         int flag =0;
-        for(int j=0;j<size-1-i;j++){
-            if(arr[j]>arr[j+1]){
-                int temp=arr[j];
-                arr[j]=arr[j+1];
-                arr[j+1]=temp;
+        for(int j=0;j<size-1-i;j++)
+        {
+            if(arr[j]>arr[j+1])
+            {
+                swap(&arr[j],&arr[j+1]);
                 flag=1;
             }
         }
-        if(flag==0){
+        if(flag==0)
+        {
             break;
         }
     }
@@ -45,16 +50,18 @@ int main()
     printf("Performing Bubble Short\n");
     
     bubbleshort(a,7);
-    
-    for(int i=0;i<7;i++){
+     printf("Sorted Array1: ");
+    for(int i=0;i<7;i++)
+    {
         printf("%d ",a[i]);
     }
     
     bubbleshort_adaptive(b,5);
     
     printf("\n");
-    
-    for(int i=0;i<5;i++){
+    printf("Sorted Array2: ");
+    for(int i=0;i<5;i++)
+    {
         printf("%d ",b[i]);
     }
     return 0;

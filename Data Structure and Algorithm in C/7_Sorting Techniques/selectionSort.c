@@ -24,9 +24,9 @@ void selectionSort(int arr[], int size){
 int main()
 {   
     int a[] = {374,6,1,233,5};
-    printf("Performing Selection Sorting Algorithm");
-    selectionsort(a,5);
+    selectionSort(a,5);
     printf("\n");
+    printf("Sorted Array: ");
     for(int i=0;i<5;i++){
         printf("%d ",a[i]);
     }
