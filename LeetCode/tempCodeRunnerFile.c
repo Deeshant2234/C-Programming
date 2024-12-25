@@ -1,0 +1,1 @@
+    int* indexArr = (int*)malloc(2*sizeof(int));
