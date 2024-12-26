@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-   printf("The size of a pointer is %zu bytes\n", sizeof(void *));
+   printf("The size of a pointer is %d bytes\n", sizeof(void *));
    return 0;
 }
 

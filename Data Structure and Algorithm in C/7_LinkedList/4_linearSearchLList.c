@@ -16,7 +16,8 @@ void create(int a[],int n){
     
     for(int i=1;i<n;i++){
         t=(struct Node*)malloc(sizeof(struct Node));
-        t->data=a[i];
+        t->data = a[i];
+        t->next = NULL;
         last->next=t;
         last=t;
     }
@@ -29,7 +30,7 @@ void display(struct Node *p){
     }
 }
 
-struct Node* lsearch(struct Node *p,int key){
+struct Node* lSearch(struct Node *p,int key){
     while(p){
         if(key==p->data){
             return p;
@@ -39,16 +40,16 @@ struct Node* lsearch(struct Node *p,int key){
     return NULL;
 }
 
-struct Node* lsearch_improved(struct Node *p,int key){   //improving linear search by moving the key node to head 
-    struct Node*q;
+struct Node* lSearchImproved(struct Node *p,int key){   //improving linear search by moving the key node to head 
+    struct Node* temp;
     while(p){
         if(key==p->data){
-            q->next=p->next;
+            temp->next=p->next;
             p->next=first;
             first=p;
             return p;
         }
-        q=p;
+        temp=p;
         p=p->next;
     }
     return NULL;
@@ -57,29 +58,27 @@ struct Node* lsearch_improved(struct Node *p,int key){   //improving linear sear
 int main(){
     struct Node *temp;
     int a[]={1,2,42,43,12,2};
+
     create(a,6);
     display(first);
-    temp=lsearch(first,12);
-    if(temp){
-        printf("\nKey found: Data= %d  Address %p",temp->data, temp->next);
-    }
-    else{
+
+    temp=lSearch(first,12);
+    if(temp)
+        printf("\nKey found: Data= %d Next Address %#X",temp->data, temp->next);
+    else
         printf("\nKey not found");
-    }
     
     printf("\n---------------------------");
     printf("\nLinear Search with Moving to Head");
-    temp=lsearch_improved(first,12);
-    
+    temp=lSearchImproved(first,12);
      if(temp){
         printf("\nKey found: Data= %d  Address %p",temp->data, temp->next);
         printf("\nModified Liked List for Linear Search\n");
         display(first);
     }
-    else{
+    else
         printf("\nKey not found");
-    }
-    
+    return 0;
 }
 
 

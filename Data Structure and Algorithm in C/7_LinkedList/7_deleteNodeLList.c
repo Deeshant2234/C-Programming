@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h> 
 #include <stdint.h>
+
 struct Node{
     int data;
     struct Node *next;
@@ -16,6 +17,7 @@ void create(int a[],int n){
     for(int i=1;i<n;i++){
         t=(struct Node*)malloc(sizeof(struct Node));
         t->data=a[i];
+        t->next=NULL;
         last->next=t;
         last=t;
     }
@@ -63,7 +65,7 @@ int deleteNode(struct Node* p,int index){
 }
 
 int main()
-{   int a[]={2,4,6,9,11,14,19}; //I have shorted linked list now i have to insert node in this shorted LlS 
+{   int a[]={2,4,6,9,11,14,19}; //I have shorted linked list now i have to insert node in this shorted List 
     int index=14;
     create(a,7);
     display(first);

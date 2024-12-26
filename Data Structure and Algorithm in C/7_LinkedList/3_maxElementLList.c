@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+
 struct Node{
     int data;
     struct Node *next;
@@ -16,6 +17,7 @@ void create(int a[],int n){
     for(int i=1;i<n;i++){
         t=(struct Node*)malloc(sizeof(struct Node));
         t->data=a[i];
+        t->next= NULL;
         last->next=t;
         last=t;
     }
@@ -23,27 +25,32 @@ void create(int a[],int n){
 
 void display(struct Node *p){
     while(p){
-        printf("%d \n",p->data);
+        printf("%d ",p->data);
         p=p->next;
     }
 }
 
 void maxelement(struct Node *p){
-    int max=INT32_MIN; // INT32_MIN is a constant defined in the C programming language that represents
-    //the minimum value that can be stored in a variable of type int.
-    //It is defined as -2147483648, which is the smallest (most negative) value that a 32-bit signed integer can hold.
-    while(p){
-        if(p->data>max){
+    int max= INT32_MIN; 
+    // INT32_MIN is a constant defined in the C programming language
+    // that represents the minimum value that can be stored in a variable
+    // of type int.
+    //It is defined as -2147483648, which is the smallest (most negative) 
+    //value that a 32-bit signed integer can hold.
+    while(p->next!=NULL)
+    {
+        if(p->data>max)
+        {
             max=p->data;
         }
-      p=p->next;
+        p=p->next;
     }
-    printf("Max element= %d \n",max);
+    printf("\nMax element= %d \n",max);
 }
 
 int main()
-{   int a[]={2,4,32,29};
-    create(a,4);
+{   int a[]={2,4,32,444,45,29};
+    create(a,6);
     display(first);
     maxelement(first);
     

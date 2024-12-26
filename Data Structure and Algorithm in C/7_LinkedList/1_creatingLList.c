@@ -25,7 +25,7 @@ void create(int A[],int n){
 }
 
 void Display(struct Node *p){
-    while(p!=NULL){
+    while(p){
         printf("%d ",p->data);
         p=p->next;
     }
@@ -38,14 +38,12 @@ void RDisplay(struct Node *p){
     }
 }
 
-
 int main()
 {   int A[]={3,5,7,10,15,10};
     create(A,6);
     
     printf("Printing Linked List \n");
     Display(first);
-    
     return 0;
 }
 

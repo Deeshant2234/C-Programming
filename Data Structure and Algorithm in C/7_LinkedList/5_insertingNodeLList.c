@@ -15,39 +15,40 @@ void create(int a[],int n){
     for(int i=1;i<n;i++){
         t=(struct Node*)malloc(sizeof(struct Node));
         t->data=a[i];
+        t->next=NULL;
         last->next=t;
         last=t;
     }
 }
 
-int count(struct Node *p){
+int countNodes(struct Node *p){
     int count=0;
     while(p){
-        p=p->next;
         count++;
+        p=p->next;
     }
     return count;
 }
 
-
-void insert(struct Node *p,int index, int value){
-    if(index<0|| index>count(first)+1){
-        printf("\nIndex %d is not in scope of 0 to %d : No Insertion",index,count(first)+1);
-        return;
+void insertNode(struct Node *p,int index, int value){
+    if(index<0|| index>countNodes(first)){
+        printf("\nIndex %d is not in scope of 0 to %d : No Insertion",index,countNodes(first));
+        return ;
     }
-    struct Node *t;
-    t=(struct Node*)malloc(sizeof(struct Node));
-    t->data=value;
+    struct Node *temp;
+    temp=(struct Node*)malloc(sizeof(struct Node));
+    temp->data=value;
     if(index==0){
-        t->next=first;
-        first=t;
+        temp->next=first;
+        first=temp;
     }
-    else{
-        for(int i=0;i<index-1;i++){
+    else if(index>0){
+        for(int i=0;i<index-1&&p;i++)
             p=p->next;
+        if(p)
+        {   temp->next=p->next;
+            p->next=temp;
         }
-        t->next=p->next;
-        p->next=t;
     }
 }
 
@@ -62,7 +63,7 @@ int main()
 {   int a[]={2,4,32,29};
     create(a,4);
     display(first);
-    insert(first,-1,12);  //index 2 means new node after 2nd Node //data=12
+    insertNode(first,5,12);  //index 2 means new node after 2nd Node //data=12
     printf("\nAfter Inserting\n");
     display(first);
     return 0;
