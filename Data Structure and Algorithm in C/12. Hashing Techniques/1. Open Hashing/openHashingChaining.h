@@ -10,7 +10,11 @@ struct Node
 };
 
 // Function to Insert Node in a Linked List at sorted position
-static void SortedInsert(struct Node **H,int x)
+// If you use struct Node *H (a single pointer):
+// You can traverse the list and modify its nodes.
+// However, you cannot change the head of the list because you
+// are only modifying a copy of the head pointer inside the function.
+static void sortedInsert(struct Node **H,int x)
 {
     struct Node *t,*q=NULL,*p=*H;
 
@@ -26,7 +30,7 @@ static void SortedInsert(struct Node **H,int x)
         {
             q=p;
             p=p->next;
-        }
+        }   
         if(p==*H)
         {
             t->next=*H;
@@ -42,7 +46,7 @@ static void SortedInsert(struct Node **H,int x)
 }
 
 // Function to search for a key in sorted Linked List
-static struct Node *Search(struct Node *p,int key)
+static struct Node* search(struct Node *p,int key)
 {
     while(p!=NULL)
     {
