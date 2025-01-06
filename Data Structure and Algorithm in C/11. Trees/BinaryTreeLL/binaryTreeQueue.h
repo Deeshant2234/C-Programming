@@ -1,49 +1,53 @@
-struct node
+struct tnode
 {
-    struct node* lchild;
+    struct tnode *lchild;
     int data;
-    struct node* rchild;
-};
+    struct tnode *rchild;
+};  
 
-struct queue
+struct qnode
 {
     int size;
-    int front;
-    int rear;
-    struct node* *Q;
-};
+    int first;
+    int last;
+    struct tnode **Q;       // Pointer to a array of pointer to structure
+}; 
 
-void createQueue( struct queue *q, int size)
+void createQ(struct qnode *q, int size)
 {
     q->size = size;
-    q->front = q->rear=0;
-    q->Q = (struct Node **)malloc(q->size*sizeof(struct Node *));
+    q->first = q->last = -1;
+    q->Q = (struct tnode **)malloc(q->size*sizeof(struct tnode *));
 }
 
-int isEmpty(struct queue q)
-{
-    return q.front==q.rear;
-}
-
-void enqueue(struct queue *q, struct node *x)
-{
-    if((q->rear+1)%q->size==q->front)
-        printf("Queue is Full");
+void enqueue(struct qnode *q, struct tnode *x)
+{ 
+    if((q->last+1)%q->size==q->first)
+        printf("Queue is full");
     else
     {
-        q->rear=(q->rear+1)%q->size;
-        q->Q[q->rear]=x;
+        q->last=(q->last+1)%q->size;
+        q->Q[q->last] = x;
     }
 }
 
-struct node* dequeue(struct queue *q)
-{   struct Node* x=NULL;
-    if(q->front==q->rear)
-        printf("Queue is Empty\n");
+struct tnode* dequeue(struct qnode *q)
+{
+    struct tnode *x=NULL;
+    if(q->first==q->last)
+        printf("Queue is empty");
     else
     {
-        q->front=(q->front+1)%q->size;
-        x=q->Q[q->front];
-    }
+        q->first = (q->first+1)%q->size; 
+        x = q->Q[q->first];
+    } 
     return x;
 }
+
+int isEmpty(struct qnode q)
+{
+    if(q.first==q.last)
+        return 1;
+    return 0;
+}
+
