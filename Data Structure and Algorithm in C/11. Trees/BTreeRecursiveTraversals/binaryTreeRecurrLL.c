@@ -63,15 +63,33 @@ void createTree()
 
 }
 
-void preorderTraversal(struct tnode *p)
+void preOrderTraversal(struct tnode *p)
 { 
     if(p)
     {
-        printf("Data %d\n", p->data);
-        preorderTraversal(p->lchild);
-        // printf("Data %d\n", p->data);  // Inorder Traversal
-        preorderTraversal(p->rchild);
-        // printf("Data %d\n", p->data);  // PostOrder Traversal
+        printf("Data %d\n", p->data);  
+        preOrderTraversal(p->lchild);
+        preOrderTraversal(p->rchild);
+    }
+}
+
+void inOrderTraversal(struct tnode *p)
+{ 
+    if(p)
+    {
+        inOrderTraversal(p->lchild);
+        printf("Data %d\n", p->data); 
+        inOrderTraversal(p->rchild);
+    }
+}
+
+void postOrderTraversal(struct tnode *p)
+{ 
+    if(p)
+    {
+        postOrderTraversal(p->lchild);
+        postOrderTraversal(p->rchild);
+        printf("Data %d\n", p->data); 
     }
 }
 
@@ -80,7 +98,13 @@ int main()
     createTree();
     printf("--------------------------------------------------------- \n");
     printf("-----------Tree Display: PreOrder Traversal ------------- \n");
-    preorderTraversal(root);
+    preOrderTraversal(root);
+    printf("--------------------------------------------------------- \n");
+    printf("-----------Tree Display: InOrder Traversal ------------- \n");
+    inOrderTraversal(root);
+    printf("--------------------------------------------------------- \n");
+    printf("-----------Tree Display: postOrder Traversal ------------- \n");
+    postOrderTraversal(root);
     return 0;
 }
 
