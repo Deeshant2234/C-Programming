@@ -22,8 +22,6 @@ int main()
     printf("Sorted Array: ");
     insertionSort(a,6);
     for(int i=0;i<6;i++)
-    {
         printf("%d ",a[i]);
-    }
     return 0;
 }

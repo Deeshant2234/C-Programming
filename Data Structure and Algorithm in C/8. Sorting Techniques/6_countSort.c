@@ -22,26 +22,26 @@ void countSort(int *arr, int n)
     
     for(int i=0;i<n;i++)
         count[arr[i]]++;
-    // int i = 0;
-    // int j = 0;
-    // while(i<max+1){
-    //     if(count[i]!=0)
-    //     {
-    //         arr[j++]=i;
-    //         count[i]--;
-    //     }
-    //     else
-    //         i++;
-
-    //---------OR-------------- //
-    // Finding sorted indexes for all values
-    for(int i=1; i<max+1; i++)
-        count[i]+=count[i-1];
-    // For each arr[i] check its sorted index and copy in temp array
-    for(int i=0; i<n; i++)
-        temp[--count[arr[i]]]=arr[i];
-    for(int i=0; i<n; i++)
-        arr[i]=temp[i];
+    int i = 0;
+    int j = 0;
+    while(i<max+1){
+        if(count[i]!=0)
+        {
+            arr[j++]=i;
+            count[i]--;
+        }
+        else
+            i++;
+    }
+    // //---------OR-------------- //
+    // // Finding sorted indexes for all values
+    // for(int i=1; i<max+1; i++)
+    //     count[i]+=count[i-1];
+    // // For each arr[i] check its sorted index and copy in temp array
+    // for(int i=0; i<n; i++)
+    //     temp[--count[arr[i]]]=arr[i];
+    // for(int i=0; i<n; i++)
+    //     arr[i]=temp[i];
 }
 
 int main()

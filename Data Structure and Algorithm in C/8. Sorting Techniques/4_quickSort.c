@@ -14,7 +14,7 @@ int partitioningFunc(int *arr, int l, int h)
     int j = h;
 
     do
-    {
+    { 
         do{i++;}while(arr[i]<=pivot);
         do{j--;}while(arr[j]>pivot);
         if(i<j){

@@ -14,9 +14,7 @@ void selectionSort(int arr[], int size){
         for(j=k=i;j<size;j++)
         {
             if(arr[j]<arr[k])
-            {
                 k=j;
-            }
         }
         swap(&arr[i],&arr[k]);
     }
