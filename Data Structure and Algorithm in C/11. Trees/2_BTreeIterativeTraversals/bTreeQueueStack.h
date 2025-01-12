@@ -53,7 +53,11 @@ int isEmptyQ(struct qnode q)
     return 0;
 } 
 
+
 /*----------------------------------STACK FOR TREES-----------------------------------*/
+
+/* Stack Data Structure is required for Level Order Traversal of a Tree */
+
 struct stack
 {
     int size;
