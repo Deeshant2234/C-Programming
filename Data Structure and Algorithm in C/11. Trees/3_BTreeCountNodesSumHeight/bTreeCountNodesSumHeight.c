@@ -98,6 +98,35 @@ int heightTree(struct tnode *p)
     return 0;
 }
 
+int countNodeDegree2(struct tnode *p)
+{   int x,y;
+    if(p)
+    {
+        x = countNodeDegree2(p->lchild);
+        y = countNodeDegree2(p->rchild);
+        if(p->lchild!=NULL && p->rchild!=NULL)
+            return x+y+1;
+        else    
+            return x+y;
+    }
+    return 0;
+}
+
+int countLeafNodes(struct tnode *p)
+{   int x,y;
+    if(p)
+    {
+        x = countLeafNodes(p->lchild);
+        y = countLeafNodes(p->rchild);
+        if(p->lchild==NULL && p->rchild==NULL)
+            return x+y+1;
+        else    
+            return x+y;
+    }
+    return 0;
+}
+
+
 int main()
 {   
     createTree();
@@ -109,6 +138,10 @@ int main()
     printf("Sum of Nodes: %d\n", addNodes(root));
 
     printf("Height of Binary Tree: %d\n", heightTree(root));
+
+    printf("Number of Nodes with degree 2: %d\n", countNodeDegree2(root));
+
+    printf("Number of Leaf Nodes: %d\n", countLeafNodes(root));
 
     return 0;
 }
