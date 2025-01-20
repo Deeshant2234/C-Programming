@@ -90,6 +90,31 @@ void insert(int key)
         r->rchild = p;
 }
 
+struct tnode* rInsert(struct tnode *p, int key)
+{   
+    struct tnode* t = NULL;
+
+    // If the current node is NULL, create a new node
+    if(p==NULL)
+    {
+        t = (struct tnode*)malloc(sizeof(struct tnode));
+        t->data = key;
+        t->lchild = t->rchild = NULL;
+        return t;
+    }
+    
+    // If the key is less than the current node's data, insert in the left subtree
+    if(key<p->data)
+        p->lchild = rInsert(p->lchild,key);
+    // If the key is greater than the current node's data, insert in the right subtree
+    else if(key>p->data)
+        p->rchild = rInsert(p->rchild,key);
+    
+    // Return the current node
+    return p;
+}
+
+
 void preOrder(struct tnode *p)
 {
     if(p)
