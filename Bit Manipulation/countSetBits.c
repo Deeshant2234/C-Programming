@@ -11,13 +11,27 @@ int main()
         if(n&1)
             countSetBits++;
         n = n>>1;
-    }
-    while(n>0);
+    } while(n>0);
     printf("No. of Set Bits are: %d",countSetBits);
     return 0;
 }
 
-// METHOD 2: USING BRUTE FORCE METHOD
+// METHOD 2: 
+// int main() {
+//     int n = 8;
+//     int countSetBits = 0;
+
+//     while(n!=0)
+//     {
+//         n = n & (n-1);
+//         countSetBits++;
+//     }
+
+//     printf("Total set bits: %d\n", countSetBits);
+//     return 0;
+// }
+
+// METHOD 3: USING BRUTE FORCE METHOD
 // int main() {
 //     int n = 6;
 //     int countSetBits = 0;
