@@ -1,10 +1,19 @@
 // QUICK SORT
 #include<stdio.h>
 
-void swap(int*x, int*y){
-    int temp=*x;
-    *x=*y;
-    *y=temp;
+void swap(int *a,int *b)
+{   
+    /* Fails when swapping same memory location (a[i] with a[i])
+    In quicksort, sometimes i==j during partition
+    XOR swap corrupts value when a and b point to same location */
+    
+    if(a != b)
+    {
+        *a = *a^*b;
+        *b = *a^*b;
+        *a = *a^*b;
+    }
+
 }
 
 int partitioningFunc(int *arr, int l, int h)
@@ -40,13 +49,14 @@ void quickSort(int *arr, int l , int h)
 
 int main()
 {   
-    int arr[] = {3,2,4,1,6,6,45,67,34,5,60};
+    int arr[] = {4,2,9,5,1,7,10,50,0,4,2,9,5,1,7,10,50,0};
     
-    quickSort(arr,0,10);
+    int size = sizeof(arr)/sizeof(arr[0]);
+    quickSort(arr,0,size);
     
     printf(" Sorted Array: ");
 
-    for(int i=0; i<10; i++){
+    for(int i=0; i<size; i++){
         printf("%d ",arr[i]);
     }
 

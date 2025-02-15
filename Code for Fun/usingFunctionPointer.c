@@ -9,9 +9,9 @@ float divide(int a, int b);
 int main() {
     int num1, num2, choice;
     float result;
-    
+
     // Array of function pointers
-    float (*operation[])(int, int) = {add, subtract, multiply, divide};
+    float (*fPtr[])(int, int) = {add, subtract, multiply, divide};
 
     // Taking input from the user
     printf("Enter first number: ");
@@ -35,7 +35,7 @@ int main() {
             printf("Error: Division by zero is not allowed.\n");
         else
         {
-            result = operation[choice - 1](num1, num2);
+            result = fPtr[choice - 1](num1, num2);
             printf("Result: %.2f\n", result);
         }
     } 
